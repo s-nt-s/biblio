@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--link rel="icon" type="image/svg+xml" href="/favicon.svg" /-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de epub</title>
+    <base target="_blank"/>
+  </head>
+  <body>
+    <header>
+      <p>
+        Buscador de epubs
+      </p>
+    </header>
+    <main>
+      <form action="#" method="get">
+        <p><label for="title">Título</label> <input type="text" id="title"/></p>
+        <p><label for="author">Autor</label> <input type="text" id="author"/> </p>
+        <button id="search" type="button">Buscar</button>
+      </form>
+      <div id="results">
+        
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Código fuente en
+        <a href="https://github.com/s-nt-s/epub">GitHub</a>. Si falla o tienes alguna sugerencia pon
+        un <a href="https://github.com/s-nt-s/eventos/epub">issue</a>.
+      </p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
