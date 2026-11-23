@@ -75,6 +75,11 @@ button {
 
 .description {
   margin: 0.4em 0 0.8em;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 
 .cover {

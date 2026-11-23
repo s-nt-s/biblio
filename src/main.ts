@@ -16,7 +16,9 @@ onReady(() => {
       doSearch();
     }
   );
-  document.querySelectorAll<HTMLInputElement>('input[type="text"]').forEach(input => {
+  document.querySelectorAll<HTMLInputElement>(
+    'input[type="text"]'
+  ).forEach(input => {
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") {
         e.preventDefault();
