@@ -1,9 +1,9 @@
 import './style.css'
-import { onReady, onAction, getElement, getDom } from './util';
+import { onReady, onAction, getElement, getDomName, getDom } from './util';
 import { State } from './state'
 import { type Book } from './model'
 
-const TARGET = "https://ole.dedyn.io/eb/search"
+const TARGET = import.meta.env.VITE_BACKEND;
 
 onReady(() => {
   const state = State.getState();
@@ -37,6 +37,7 @@ function doSearch() {
     const doDone = () => {
       t.textContent="Buscar";
       t.removeAttribute("disabled");
+      State.getState().toQuerty();
     }
     if (r == null) doDone();
     else {
@@ -52,12 +53,14 @@ function _doSearch() {
   const state = State.getState()
   const title = state.title.get();
   const author = state.author.get();
+  const format = state.format.get();
   if (title == null && author == null) {
     return;
   }
   const qr = ["lang=spa"];
   if (title) qr.push('title='+encodeURI(title));
   if (author) qr.push('author='+encodeURI(author));
+  if (format) qr.push('format='+encodeURI(format));
   const url = TARGET + "?" + qr.join("&");
   return fetch(url).then(r=>r.json()).then(data=>{
     if (!Array.isArray(data)) return;
@@ -70,7 +73,7 @@ function _doSearch() {
         imgs.push(`
           <figure>
             <a href="${x.url}"><img src="${x.cover}" alt="${getDom(x.url)}"/></a>
-            <figcaption><a href="${x.url}">${getDom(x.url)}</a></figcaption>
+            <figcaption><a href="${x.url}">${getDomName(x.url)}</a></figcaption>
           </figure>
         `);
       })

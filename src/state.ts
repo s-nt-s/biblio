@@ -1,4 +1,4 @@
-import { InputString, FormField } from "./form";
+import { InputString, FormField, SelectString } from "./form";
 
 
 
@@ -6,6 +6,8 @@ export class State {
     private static __instance: State | null = null;
     public readonly title = new InputString("#title", null, 't');
     public readonly author = new InputString("#author", null, 'a');
+    public readonly format = new SelectString("#format", "epub", 'f');
+    
     private readonly __onchange: EventListener[] = [];
 
     static getState() {
@@ -27,10 +29,6 @@ export class State {
     }
 
     private __init() {
-        this.__addEventListener(
-            () => {this.toQuerty()},
-            ...this.__getImputs().flatMap(i=>i.node),
-        );
         window.addEventListener(
             "popstate",
             () => {this.toForm()}
@@ -45,6 +43,7 @@ export class State {
         [
             this.title,
             this.author,
+            this.format,
         ].forEach((i) => {
             const v = qr.get(i.qr);
             if(v!=null) return i.set(v);
@@ -59,6 +58,7 @@ export class State {
         [
             this.title,
             this.author,
+            this.format,
         ].forEach((i) => {
             const v = i.get()
             if(v!=null) return qr.push(`${i.qr}=${v}`);

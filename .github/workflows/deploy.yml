@@ -30,6 +30,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build site
+        env:
+          VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
         run: npm run build -- --base=/epub/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

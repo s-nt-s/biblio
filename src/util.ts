@@ -69,3 +69,11 @@ export function getDom(url: string) {
     dom = dom.replace(/\/.*/, "");
     return dom;
 }
+
+export function getDomName(url: string) {
+    const dom = getDom(url);
+    const name = {
+        "gestiona.comunidad.madrid": "Biblio Madrid",
+    }[dom] || dom;
+    return name;
+}

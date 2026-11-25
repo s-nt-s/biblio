@@ -119,7 +119,7 @@ button {
   object-fit: contain;
 }
 
-#search {
+#search, form select {
     width: 100%;
 }
 
