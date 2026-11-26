@@ -77,8 +77,9 @@ function _doSearch() {
           </figure>
         `);
       })
+      const aTxt = x.author.length?`<small class="author">(${x.author.join(" - ")})</small>`:"";
       div.insertAdjacentHTML('beforeend', `
-        <h1 class="title">${x.title} <small class="author">(${x.author.join(" - ")})</small></h1>
+        <h1 class="title">${x.title}${aTxt}</h1>
         <p class="description">${x.description}</p>
         <div class="cover">
         ${imgs.join('\n')}
