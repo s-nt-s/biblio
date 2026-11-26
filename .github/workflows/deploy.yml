@@ -32,7 +32,7 @@ jobs:
       - name: Build site
         env:
           VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
-        run: npm run build -- --base=/epub/
+        run: npm run build -- --base=/biblio/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
